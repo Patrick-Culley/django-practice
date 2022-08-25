@@ -1,10 +1,20 @@
-<h1>Dashboard</h1>
+{% load static %}
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'polls/style.css' %}">
 
+<h1>DASHBOARD</h1>
+
+<div class="sidebar">
+<h3>LATEST NEWS</h3>
 <ul>
     {% for key in response.feed %}
-        {{key.title}}
+        <li><strong>{{key.title}}</strong></li>
+        <li>{{key.url}}</li>
         <br>
-        {{key.url}}
-        <br><br>
     {% endfor %}
 </ul>
+</div>
+</body>
