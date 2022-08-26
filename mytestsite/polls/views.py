@@ -7,7 +7,7 @@ from django.http import HttpResponse
 
 def index(request):
     response = requests.get('https://www.alphavantage.co/query?function=NEWS_SENTIMENT&topics=technology&apikey=RIDUWMSKIS4518PV').json()
-    return render(request, 'polls/index.html', {'response':response})
+    return render(request, 'polls/content.html', {'response':response})
 
 def detail(request, question_id):
     return HttpResponse("You're looking at question %s." % question_id)

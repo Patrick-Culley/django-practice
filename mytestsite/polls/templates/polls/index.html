@@ -1,20 +1,35 @@
 {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+    <title>{% block title %}Stock Dash{% endblock %}</title>
+</head>
 <body>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{% static 'polls/style.css' %}">
 
 <h1>DASHBOARD</h1>
+
+ <div class="composites">
+    {% block content %}
+    {% endblock %}
+ </div>
 
 <div class="sidebar">
 <h3>LATEST NEWS</h3>
 <ul>
     {% for key in response.feed %}
-        <li><strong>{{key.title}}</strong></li>
-        <li>{{key.url}}</li>
+        <li class="news_title">
+            <a href= {{key.url}}><strong>{{key.title}}</strong></a>
+        </li>
+        <li>
+           <a href={{key.banner_image}} id="summary">{{key.summary}}</a>
+        </li>
         <br>
     {% endfor %}
 </ul>
 </div>
 </body>
+</html>
