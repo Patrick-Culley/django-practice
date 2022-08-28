@@ -1,5 +1,12 @@
 {% extends 'polls/index.html' %}
 
 {% block content %}
-<h2>Composite indices here.</h2>
-{% endblock %}
+<table>
+{% for stock, value in composites.items %}
+    <th>{{stock}}</th>
+    {% for price, cost in value.items %}
+    <th id="cost">${{cost | floatformat:2}}</th>
+    {% endfor %}
+{% endfor %}
+</table>
+{% endblock %}                              

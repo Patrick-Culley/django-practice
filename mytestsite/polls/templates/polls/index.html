@@ -20,12 +20,15 @@
 <div class="sidebar">
 <h3>LATEST NEWS</h3>
 <ul>
-    {% for key in response.feed %}
+    {% for key in news.feed %}
         <li class="news_title">
             <a href= {{key.url}}><strong>{{key.title}}</strong></a>
         </li>
         <li>
-           <a href={{key.banner_image}} id="summary">{{key.summary}}</a>
+            {% if key.banner_image %}
+            <img src={{key.banner_image}} alt="img" class="news_images">
+            {% endif %}
+            <p>{{key.summary}}</p>
         </li>
         <br>
     {% endfor %}

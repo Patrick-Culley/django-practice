@@ -10,7 +10,7 @@ ul {
     font-size: 14px;
     list-style-type: none;
     display: block;
-    width: 300px;
+    width: 90%;
     height: 1000px;
     overflow: auto;
     letter-spacing: .5px;
@@ -20,7 +20,7 @@ ul {
 }
 
 li {
-    padding-bottom: 3px;
+    padding-bottom: 0px;
 }
 
 ul::-webkit-scrollbar-thumb {
@@ -46,7 +46,6 @@ h1 {
     margin: 0 auto;
 }
 
-
 a {
     text-decoration: none;
     color: white;
@@ -57,7 +56,7 @@ a:hover {
 }
 
 #summary {
-    font-size: 13px;
+    font-size: 12px;
     font-style: italic;
     font-weight: 100;
 }
@@ -68,8 +67,23 @@ a:hover {
 }
 
 .composites {
+    padding-top: 10px;
     margin: 0 auto;
     width: 50%;
     text-align: center;
 }
 
+table {
+    display: inline;
+    font-size: 18px;
+}
+
+#cost {
+    padding-right: 15px;
+}
+
+.news_images {
+    padding-top: 2px;
+    width:260px;
+    height: 180px;
+}
