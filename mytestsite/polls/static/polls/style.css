@@ -1,12 +1,18 @@
 html body {
-    background-color: #050100; 
+    background-color: #19161c; 
     color: white;
     font-family: 'Ubuntu', sans-serif;
+    padding-left: 2%;
+    padding-right: 2%;
 }
+
+
+/*--------------------- LISTS -----------------------------*/
 
 ul {
     padding-left: 0px;
     padding-right: 20px;
+    padding-top: 10px;
     font-size: 14px;
     list-style-type: none;
     display: block;
@@ -61,11 +67,6 @@ a:hover {
     font-weight: 100;
 }
 
-.sidebar {
-    width: 300px;
-    margin-right: 0;
-}
-
 .composites {
     padding-top: 10px;
     margin: 0 auto;
@@ -73,17 +74,91 @@ a:hover {
     text-align: center;
 }
 
-table {
-    display: inline;
-    font-size: 18px;
+#cost {
+    padding-right: 1px;
+    margin-left: 0px;
 }
 
-#cost {
-    padding-right: 15px;
+/* ------------------- DIVS -------------------------*/
+
+.content {
+    display: flex;
+    margin-top: 20px;
+}
+
+/* .main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+.most_traded {
+    padding-left: 15px;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    letter-spacing: 1.5px;
+    justify-content: center
 }
 
 .news_images {
     padding-top: 2px;
     width:260px;
     height: 180px;
+}
+
+.sidebar {
+    width: 300px;
+    margin-right: 0;
+    padding-top: 11px;
+}
+
+
+/* ----------------TABLES--------------------------*/
+
+table {
+    width: 100%;
+}
+
+thead tr td{
+    font-size: 20px;
+    padding-bottom: 20px;
+}
+
+tr th {
+    padding: 10px;
+    text-align: left;
+    color: grey;
+    right: 0;
+    padding-left: 0;
+}
+
+tr td {
+    text-align: left;
+    padding-top: 10px;
+    font-size: 13px;
+}
+
+form {
+    position: relative;
+    margin-top: 0;
+    margin: 0;
+    display: flex;
+    text-align: left;
+    justify-content: center;
+}
+
+.search {
+    padding-left: 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+    color: white;
+    background-color: #2a2e39;
+    font-size: 14px;
+    height: 30px; 
+    width: 450px;
+}
+
+.news-head {
+    font-size: 20px;
 }
