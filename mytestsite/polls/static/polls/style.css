@@ -162,3 +162,8 @@ form {
 .news-head {
     font-size: 20px;
 }
+
+.graphs {
+    height: 200px; 
+    width: 500px;
+}
