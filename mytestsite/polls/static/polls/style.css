@@ -108,7 +108,7 @@ a:hover {
 }
 
 .sidebar {
-    width: 300px;
+    width: 400px;
     margin-right: 0;
     padding-top: 11px;
 }
@@ -161,6 +161,7 @@ form {
 
 .news-head {
     font-size: 20px;
+    padding-top: 20px;
 }
 
 .graphs {

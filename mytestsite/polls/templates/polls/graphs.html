@@ -1,9 +1,12 @@
 {% extends 'polls/index.html' %}
 
 {% block graphs %}
-{% for key in graphs %}
-    {{key}}
-{% endfor %}
+    {% for value in graphs %}
+    <span class="value">{{value}}</span>
+    {% endfor %}
+    {% for date in interval %}
+    <span class="interval">{{date}}</span>
+    {% endfor %}
 {% endblock %}
 
 {% block content %}
@@ -11,20 +14,57 @@
 
 {% block script %}
 <script>
-let ctx = document.getElementById("chart").getContext("2d");
+  let ctx = document.getElementById("chart").getContext("2d");
+  let prices = document.getElementsByClassName("value");
+  let timespan = document.getElementsByClassName("interval"); 
 
-let chart = new Chart(ctx, {
-  type: "line",
-  data: {
-     labels: ["2020/Q1", "2020/Q2", "2020/Q3", "2020/Q4"],
-     datasets: [
-        {
-          backgroundColor: "#79AEC8",
-          borderColor: "#417690",
-          data: [26900, 28700, 27300, 29200]
+  let price = []
+  let counter = 0 
+  for (let i = 16; i > 0; i--){
+      price[counter] = prices[i].innerHTML
+      counter ++
+  }
+  
+  counter = 0
+  let interval = []
+  for (let i = 16; i > 0; i--){
+      interval[counter] = timespan[i].innerHTML
+      counter ++
+  }
+
+  const myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: interval,
+        datasets: [{
+            label: '# of Votes',
+            data: price,
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            },
+            xAxes: [{
+            ticks: {
+                display: false
+              }
+            }]
+        },
+        legend: {
+          display: false
         }
-     ]
-  },
-});
-</script>
+    }
+  });
+  </script>
 {% endblock script %}
