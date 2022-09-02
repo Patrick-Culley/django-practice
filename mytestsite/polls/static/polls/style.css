@@ -121,7 +121,7 @@ table {
 }
 
 thead tr td{
-    font-size: 20px;
+    font-size: 21px;
     padding-bottom: 20px;
 }
 
@@ -136,7 +136,11 @@ tr th {
 tr td {
     text-align: left;
     padding-top: 10px;
-    font-size: 13px;
+    font-size: 14px;
+}
+
+.prices {
+    padding-left: 30px;
 }
 
 form {
@@ -167,4 +171,8 @@ form {
 .graphs {
     height: 200px; 
     width: 500px;
+}
+
+.search {
+    border: 5px solid yellow;
 }

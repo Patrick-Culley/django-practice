@@ -5,6 +5,23 @@
     <input type="submit" value="Submit" placeholder="Search by symbol or company" class="search" name="txt" onmouseout="this.value = ''; this.blur();">>
 </form> 
 {% endblock %} -->
-<h1>
-    {{form}}
-</h1>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'polls/search.css' %}">
+</head>
+<body>
+<div class="ticker">
+    <h1 class>{{form.symbol}}</h1>
+    <h1 class>Market Cap: {{form.m_cap}}</h1>
+    <h1 class>PE Ratio: {{form.peRatio}}</h1>
+    <h1 class>EPS Ratio: {{form.eps}}</h1>
+    <h1 class>52 Week High: {{form.52weekhigh}}</h1>
+    <h1 class>52 Week Low: {{form.52weeklow}}</h1>
+</div>
+</body>
+</html>

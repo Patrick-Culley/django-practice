@@ -4,10 +4,9 @@ from time import time
 from django.shortcuts import render
 from .models import Question
 from django.http import HttpResponse
+import math 
  
-
 # Create your views here.
-
 
 def index(request):
     response = requests.get('https://www.alphavantage.co/query?function=NEWS_SENTIMENT&topics=technology&apikey=RIDUWMSKIS4518PV').json()
@@ -35,13 +34,28 @@ def graphs():
     return [price_list, date_list]
 
 def search(request):
-    test = "Testing 1-2-3"
+    ticker = request.GET.get("search")
+    response = requests.get('https://www.alphavantage.co/query?function=OVERVIEW&symbol=' + ticker.upper() + '&apikey=RIDUWMSKIS4518PV').json()
 
-    print(request.GET) 
-    # form = searchForm() 
+    metrics = {
+        "symbol": ticker.upper(),
+        "m_cap": conversions(response["MarketCapitalization"]), 
+        "peRatio": response["PERatio"],
+        "eps": response["EPS"],
+        "52weekhigh": response["52WeekHigh"],
+        "52weeklow": response["52WeekLow"]
+    }
 
-    return render(request, 'polls/search.html', {'form': "HELLO WORLD"})
+    return render(request, 'polls/search.html', {'form': metrics})
 
+def conversions(value): 
+    first = list(value)
+    if len(value) >= 13: 
+        first.insert(1, ".")
+        return (''.join(first))[:4] + " trillion"
+    elif len(value) < 13 and len(value) > 6: 
+        first.insert(3, ".")
+        return (''.join(first))[:6] + " million"
 
 
 def detail(request, question_id):
