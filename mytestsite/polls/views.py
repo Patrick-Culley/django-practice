@@ -36,14 +36,23 @@ def graphs():
 def search(request):
     ticker = request.GET.get("search")
     response = requests.get('https://www.alphavantage.co/query?function=OVERVIEW&symbol=' + ticker.upper() + '&apikey=RIDUWMSKIS4518PV').json()
+    news = requests.get('https://www.alphavantage.co/query?function=NEWS_SENTIMENT&topics=technology&apikey=RIDUWMSKIS4518PV').json()
 
     metrics = {
+        "news": news["feed"],
         "symbol": ticker.upper(),
+        "summary": response["Description"],
         "m_cap": conversions(response["MarketCapitalization"]), 
         "peRatio": response["PERatio"],
         "eps": response["EPS"],
         "52weekhigh": response["52WeekHigh"],
-        "52weeklow": response["52WeekLow"]
+        "52weeklow": response["52WeekLow"],
+        "targetprice": response["AnalystTargetPrice"],
+        "margin": response["ProfitMargin"],
+        "beta": response["Beta"], 
+        "div_yield": response["DividendYield"],
+        "DivDate": response["ExDividendDate"]
+
     }
 
     return render(request, 'polls/search.html', {'form': metrics})
@@ -54,8 +63,25 @@ def conversions(value):
         first.insert(1, ".")
         return (''.join(first))[:4] + " trillion"
     elif len(value) < 13 and len(value) > 6: 
-        first.insert(3, ".")
-        return (''.join(first))[:6] + " million"
+        if len(value) == 12:
+            first.insert(3, ".")
+            return (''.join(first))[:6] + " billion"
+        elif len(value) == 11:
+            first.insert(2, ".")
+            return (''.join(first))[:5] + " billion"
+        else: 
+            first.insert(1,".")
+            return (''.join(first))[:4] + " billion"
+    else: 
+        if len(value) == 9:
+            first.insert(3, ".")
+            return (''.join(first))[:6] + " million"
+        elif len(value) == 8:
+            first.insert(2, ".")
+            return (''.join(first))[:5] + " million"
+        else: 
+            first.insert(1,".")
+            return (''.join(first))[:4] + " million"
 
 
 def detail(request, question_id):

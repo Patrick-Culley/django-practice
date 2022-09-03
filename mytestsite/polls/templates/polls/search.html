@@ -6,22 +6,56 @@
 </form> 
 {% endblock %} -->
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'polls/search.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 </head>
 <body>
-<div class="ticker">
-    <h1 class>{{form.symbol}}</h1>
-    <h1 class>Market Cap: {{form.m_cap}}</h1>
-    <h1 class>PE Ratio: {{form.peRatio}}</h1>
-    <h1 class>EPS Ratio: {{form.eps}}</h1>
-    <h1 class>52 Week High: {{form.52weekhigh}}</h1>
-    <h1 class>52 Week Low: {{form.52weeklow}}</h1>
+<div class="col-md-12">
+<div class="text-center font-weight-bold">
+    <h1 class="header">DASHBOARD</h1>
+</div> 
 </div>
+<div class="col-md-12">
+    <h1 class>{{form.symbol}}</h1>
+    <h3 class>Description: {{form.summary}}</h3>
+</div>
+<div class="col-md-6">
+    <div class="news">
+        {% for val in form.news %}
+            {% if val.banner_image %}
+            <img src={{val.banner_image}} alt="img" class="news_images">
+            {% endif %} 
+            <p><strong>{{val.title}}</strong></p>
+            <p>{{val.summary}}</p>
+        {% endfor %}
+    </div>
+</div>
+<div class="col-md-6">
+    <h6 class="metrics">Market Cap: {{form.m_cap}}</h1>
+    <h6 class="metrics">PE Ratio: {{form.peRatio}}</h1>
+    <h6 class="metrics">EPS Ratio: {{form.eps}}</h1>
+    <h6 class="metrics">52 Week High: {{form.52weekhigh}}</h1>
+    <h6 class="metrics">52 Week Low: {{form.52weeklow}}</h1>
+    <h6 class="metrics">Target Price: {{form.targetprice}}</h1>
+    <h6 class="metrics">Profit Margin: {{form.margin}}</h1>
+    <h6 class="metrics">Beta ratio: {{form.beta}}</h1>
+    <h6 class="metrics">Dividend Yield: {{form.div_yield}}</h1>
+    <h6 class="metrics">Dividend date: {{form.DivDate}}</h1>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+<style type="text/css">body { background: black !important; color: white;}</style>
 </body>
 </html>
