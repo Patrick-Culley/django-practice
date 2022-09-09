@@ -5,8 +5,6 @@ from django.shortcuts import render
 from .models import Question
 from django.http import HttpResponse
 import math 
- 
-# Create your views here.
 
 def index(request):
     response = requests.get('https://www.alphavantage.co/query?function=NEWS_SENTIMENT&topics=technology&apikey=RIDUWMSKIS4518PV').json()
@@ -36,11 +34,19 @@ def graphs():
 def search(request):
     ticker = request.GET.get("search")
     response = requests.get('https://www.alphavantage.co/query?function=OVERVIEW&symbol=' + ticker.upper() + '&apikey=RIDUWMSKIS4518PV').json()
-    news = requests.get('https://www.alphavantage.co/query?function=NEWS_SENTIMENT&topics=technology&apikey=RIDUWMSKIS4518PV').json()
+    news = requests.get('https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=' + ticker.upper() + '&topics=technology&apikey=RIDUWMSKIS4518PV').json()
+    quote = requests.get('https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=' + ticker.upper() + '&apikey=RIDUWMSKIS4518PV').json() 
 
     metrics = {
+        "name": response["Name"],
+        "curr_price": quote["Global Quote"]["05. price"],
+        "dollar_change": quote["Global Quote"]["09. change"] + " ",
+        "percent_change": "(" + quote["Global Quote"]["10. change percent"] + ") ",
+        "signed_int": 0 if quote["Global Quote"]["09. change"][0] == "-" else 1, 
+        "date": quote["Global Quote"]["07. latest trading day"], 
+        "exchange": " | " + response["Exchange"],
         "news": news["feed"],
-        "symbol": ticker.upper(),
+        "symbol": ticker.upper(), 
         "summary": response["Description"],
         "m_cap": conversions(response["MarketCapitalization"]), 
         "peRatio": response["PERatio"],
