@@ -18,13 +18,27 @@
 <div class="col-md-12">
     <div class="text-center font-weight-bold">
         <h1 class="header">DASHBOARD</h1>
+        <div class="container">
+        <nav class="navbar bg-dark w-30 mx-auto">
+            <div class="container-fluid justify-content-center">
+                <a class="navbar-brand text-light" href="#">
+                    <span class="links">Home</span> 
+                    <span class="links">Search</span>
+                    <span class="links">Watchlist</span>
+                </a>
+            </div>
+        </nav>
+        </div>
     </div> 
 </div>
 
-<span class="icon">      
-    <img src={{form.icon}} alt="img" class="icon"> 
-</span> 
-<span class="fs-2">{{form.name}}</span>
+<div style="margin-top:100px;"> 
+    <span class="icon">      
+        <img src={{form.icon}} alt="img" class="rounded-circle img-thumbnail icon"> 
+    </span> 
+    <span class="fs-1"><strong>{{form.name}}</strong></span>
+</div>
+
 <h4>{{form.symbol}} {{form.exchange}}</h4>
 <h4>{{form.exhange}}</h4>
 <div class="row">
@@ -35,16 +49,16 @@
         {% if form.signed_int > 0 %}
             <div class="col-md-6">
                 <p class="fs-4">As of  {{form.date}}</p>
-                <p class="fs-3">Current 
+                <p class="fs-3">Current
                     <span class="text-success">{{form.curr_price}}</span>
                     <span class="fs-6">USD</span>
                 </p>
-                <p class="fs-3">Change: <span class="text-success">{{form.dollar_change}}  {{form.percent_change}}</span></p>
+                <p class="fs-3">Change <span class="text-success">{{form.dollar_change}}  {{form.percent_change}}</span></p>
             </div> 
         {% else %}
             <div class="col-md-6">
                 <p class="fs-4">As of  {{form.date}}</p>
-                <p class="fs-3">Current 
+                <p class="fs-3">Current
                     <span class="text-danger">{{form.curr_price}}</span>
                     <span class="fs-6">USD</span>
                 </p>
@@ -76,9 +90,11 @@
     <ul class="list-group">
         {% for val in form.news %}
             <li class="list-group-item bg-dark mb-3">
+                {% if val.banner_image %}
                 <img src={{val.banner_image}} alt="img" class="news_images">
-                <p class="ms-5 text-light"><strong>{{val.title}}</strong></p>
+                <a href= {{val.url}}><strong>{{val.title}}</strong></a>
                 <p class="ms-5 text-light fs-6">{{val.summary}}</p> 
+                {% endif %}
             </li>
         {% endfor %}
     </ul>

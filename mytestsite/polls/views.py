@@ -38,7 +38,7 @@ def search(request):
     quote = requests.get('https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=' + ticker.upper() + '&apikey=RIDUWMSKIS4518PV').json() 
 
     metrics = {
-        "name": response["Name"],
+        "name": response["Name"].upper(),
         "icon": findIcon(ticker.upper()),
         "curr_price": quote["Global Quote"]["05. price"],
         "dollar_change": quote["Global Quote"]["09. change"] + " ",
@@ -58,7 +58,7 @@ def search(request):
         "margin": response["ProfitMargin"],
         "beta": response["Beta"], 
         "div_yield": response["DividendYield"],
-        "DivDate": response["ExDividendDate"]
+        # "DivDate": response["ExDividendDate"]
     }
     return render(request, 'polls/search.html', {'form': metrics})
 
