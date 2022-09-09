@@ -39,12 +39,13 @@ def search(request):
 
     metrics = {
         "name": response["Name"],
+        "icon": findIcon(ticker.upper()),
         "curr_price": quote["Global Quote"]["05. price"],
         "dollar_change": quote["Global Quote"]["09. change"] + " ",
         "percent_change": "(" + quote["Global Quote"]["10. change percent"] + ") ",
         "signed_int": 0 if quote["Global Quote"]["09. change"][0] == "-" else 1, 
         "date": quote["Global Quote"]["07. latest trading day"], 
-        "exchange": " | " + response["Exchange"],
+        "exchange": "     |     " + response["Exchange"],
         "news": news["feed"],
         "symbol": ticker.upper(), 
         "summary": response["Description"],
@@ -58,10 +59,14 @@ def search(request):
         "beta": response["Beta"], 
         "div_yield": response["DividendYield"],
         "DivDate": response["ExDividendDate"]
-
     }
-
     return render(request, 'polls/search.html', {'form': metrics})
+
+
+def findIcon(val): 
+        response = requests.get('https://financialmodelingprep.com/api/v3/profile/' + val + '?apikey=a47ede9cfb01fb619982832def1ce5cc').json()
+        return response[0]["image"]
+
 
 def conversions(value): 
     first = list(value)
@@ -88,7 +93,6 @@ def conversions(value):
         else: 
             first.insert(1,".")
             return (''.join(first))[:4] + " million"
-
 
 def detail(request, question_id):
     return HttpResponse("You're looking at question %s." % question_id)
