@@ -1,10 +1,7 @@
 import requests  
-from .forms import searchForm
-from time import time
 from django.shortcuts import render
-from .models import Question
+from .models import Stock
 from django.http import HttpResponse
-import math 
 
 def index(request):
     response = requests.get('https://www.alphavantage.co/query?function=NEWS_SENTIMENT&topics=technology&apikey=RIDUWMSKIS4518PV').json()
@@ -60,7 +57,28 @@ def search(request):
         "div_yield": response["DividendYield"],
         # "DivDate": response["ExDividendDate"]
     }
+
     return render(request, 'polls/search.html', {'form': metrics})
+
+
+
+# Initialize FORM ------------------------------------------------------------
+
+def addstock(request):
+    stock = request.POST.get('ticker')
+    tickers = []
+    if Stock.objects.filter(ticker=stock): 
+        print(stock)
+        return render(request, 'polls/results.html', {'form': "Entry exists in Watchlist.", 'tickers': tickers})
+    else: 
+        Stock.objects.create(ticker=stock)
+        for ticker in Stock.objects.all(): 
+            response = requests.get('https://finnhub.io/api/v1/stock/metric?symbol=' + str(ticker) + '&metric=10DayAverageTradingVolume&token=ccggopaad3i9pcn3h7eg').json()
+            tickers.append(response)
+        return render(request, 'polls/results.html', {'form': tickers, 'test': "true"})
+
+#-----------------------------------------------------------------------------
+
 
 
 def findIcon(val): 
@@ -93,6 +111,10 @@ def conversions(value):
         else: 
             first.insert(1,".")
             return (''.join(first))[:4] + " million"
+
+
+
+
 
 def detail(request, question_id):
     return HttpResponse("You're looking at question %s." % question_id)

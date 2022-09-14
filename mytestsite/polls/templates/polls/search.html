@@ -18,21 +18,21 @@
 <div class="col-md-12">
     <div class="text-center font-weight-bold">
         <h1 class="header">DASHBOARD</h1>
-        <div class="container">
-        <nav class="navbar bg-dark w-30 mx-auto">
-            <div class="container-fluid justify-content-center">
-                <a class="navbar-brand text-light" href="#">
-                    <span class="links">Home</span> 
-                    <span class="links">Search</span>
-                    <span class="links">Watchlist</span>
-                </a>
+        <div class="container-sm">
+        <nav class="navbar bg-* w-50  mx-auto">
+            <div class="container-sm justify-content-center">
+              
+                    <span class="links"><a class="navbar-brand text-light" href="{% url 'index' %}">Home</a></span> 
+                    <span class="links"><a class="navbar-brand text-light" href="{% url 'index' %}">Search</a></span>
+                    <span class="links"><a class="navbar-brand text-light" href="{% url 'index' %}">Watchlist</a></span>
+    
             </div>
         </nav>
         </div>
     </div> 
 </div>
 
-<div style="margin-top:100px;"> 
+<div style="margin-top:10px;"> 
     <span class="icon">      
         <img src={{form.icon}} alt="img" class="rounded-circle img-thumbnail icon"> 
     </span> 
@@ -64,26 +64,32 @@
                 </p>
                 <p class="fs-3">Change: <span class="text-danger">{{form.dollar_change}} {{form.percent_change}}</span></p>
             </div> 
-            
-            <!-- <div class="col-md-6">
-            </div> -->
         {% endif %}
+        {% include "polls/form.html" %}
     </div>
-    </div>
-
+    </div>    
     <div class="col-md-4 fs-6">
-        <h5 class="metrics"><span class="metric">Financials ></span></h5>
-        <h6 class="metrics">Market Cap:  <span class="metric">{{form.m_cap}}</span></h6>
-        <h6 class="metrics">PE Ratio:  <span class="metric">{{form.peRatio}}</span></h6>
-        <h6 class="metrics">EPS Ratio:  <span class="metric">{{form.eps}}</span></h6>
-        <h6 class="metrics">52 Week High:  <span class="metric">{{form.52weekhigh}}</span></h6>
-        <h6 class="metrics">52 Week Low:  <span class="metric">{{form.52weeklow}}</span></h6>
-        <h6 class="metrics">Target Price: <span class="metric">{{form.targetprice}}</span></h6>
-        <h6 class="metrics">Profit Margin:  <span class="metric">{{form.margin}}</span></h6>
-        <h6 class="metrics">Beta ratio:  <span class="metric">{{form.beta}}</span></h6>
-        <h6 class="metrics">Dividend Yield:  <span class="metric">{{form.div_yield}}</span></h6>
-        <h6 class="metrics">Dividend date:  <span class="metric">{{form.DivDate}}</span></h6>
-    </div>     
+        <div class="col-md-12 fs-6">
+            <h5 class="financials"><span>Financials ></span></h5>
+        </div>
+        <div class="row">
+        <div class="col-md-6">
+            <h6 class="metrics">Market Cap:  <span class="metric">{{form.m_cap}}</span></h6>
+            <h6 class="metrics">PE Ratio:  <span class="metric">{{form.peRatio}}</span></h6>
+            <h6 class="metrics">EPS Ratio:  <span class="metric">{{form.eps}}</span></h6>
+            <h6 class="metrics">52 Week High:  <span class="metric">{{form.52weekhigh}}</span></h6>
+            <h6 class="metrics">52 Week Low:  <span class="metric">{{form.52weeklow}}</span></h6>
+        </div> 
+
+        <div class="col-md-6">
+            <h6 class="metrics">Target Price: <span class="metric">{{form.targetprice}}</span></h6>
+            <h6 class="metrics">Profit Margin:  <span class="metric">{{form.margin}}</span></h6>
+            <h6 class="metrics">Beta ratio:  <span class="metric">{{form.beta}}</span></h6>
+            <h6 class="metrics">Dividend Yield:  <span class="metric">{{form.div_yield}}</span></h6>
+            <h6 class="metrics">Dividend date:  <span class="metric">{{form.DivDate}}</span></h6>
+        </div>
+        </div>
+    </div>      
 </div>
 
 <div class="col-md-12 mt-3">
