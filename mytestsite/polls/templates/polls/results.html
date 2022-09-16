@@ -23,25 +23,38 @@
             <h3>{{msg}}</h3>
         </div>
         {% for el in form %}
+        
         <div class="row">
-            <div class="col-md-1 fs-6">
+            <ul class="col-md-12 list-group list-group-horizontal">
+                <li class="col-md-1 list-group-item">
+                    <span class="icon"><img src={{el.image}} alt="img" class="rounded-circle img-thumbnail icon"></span> </li>
+                <li class="col-md-2 list-group-item pt-3"><strong>{{el.companyName}}</strong> </li>
+                <li class="col-md-1 list-group-item pt-3"><strong>{{el.symbol}}</strong></li>
+                <li class="col-md-2 list-group-item pt-3"><strong>Current price:</strong><br>{{el.price}}</li>
+                <li class="col-md-1 list-group-item pt-3"><strong>Change:</strong><br>{{el.changes | floatformat:2 }}</li>
+                <li class="col-md-1 list-group-item pt-3"><strong>Range: </strong><br>{{el.range}}</li>
+                <li class="col-md-2 list-group-item pt-3"><strong>Market Cap: </strong><br>{{el.mktCap}}</li>
+                <!-- <li class="col-md-1 list-group-item">Beta: <br>{{el.beta}}</li> -->
+                <li class="col-md-2 text-center list-group-item pt-3"><button type="button" class="btn btn-lg btn-danger">Delete</button></li>
+            </ul>
+
+            <!-- <div class="col-md-1 fs-6">
             <div style="margin-top:1px;"> 
                 <span class="icon">      
                     <img src={{el.image}} alt="img" class="rounded-circle img-thumbnail icon"> 
                 </span> 
             </div>
             </div>
-            <div class="col-md-2 fs-6"><h6>{{el.companyName}}</h6></div>
-            <div class="col-md-1 fs-6"><h6>{{el.symbol}}</h6></div>
-            <div class="col-md-2 ms-n3 fs-6"><h6>Current price: <br>{{el.price}}</h6></div>
-            <div class="col-md-1 fs-6"><h6>Change: {{el.changes | floatformat:2 }}</h6></div>
-            <div class="col-md-1 fs-6"><h6>Range: {{el.range}}</h6></div>
-            <div class="col-md-2 fs-6"><h6>Market Cap: {{el.mktCap}}</h6></div>
-            <div class="col-md-1 fs-6"><h6>Beta: {{el.beta}}</h6></div>
-            <div class="col-md-1 fs-6"><h6><button type="button" class="btn btn-danger">Danger</button></h6></div>
+            <div class="col-md-2 pt-4 fs-6"><h5>{{el.companyName}}</h5></div>
+            <div class="col-md-1 pt-4 fs-6"><h5>{{el.symbol}}</h5></div>
+            <div class="col-md-2 pt-4 fs-6"><h5>Current price: <br>{{el.price}}</h5></div>
+            <div class="col-md-1 pt-4 fs-6"><h5>Change: <br>{{el.changes | floatformat:2 }}</h5></div>
+            <div class="col-md-1 pt-4 fs-6"><h5>Range: <br>{{el.range}}</h5></div>
+            <div class="col-md-2 pt-4 fs-6"><h5>Market Cap: <br>{{el.mktCap}}</h5></div>
+            <div class="col-md-1 pt-4 fs-6"><h5>Beta: <br>{{el.beta}}</h5></div>
+            <div class="col-md-1 pt-4 fs-6"><h5><button type="button" class="btn btn-danger">Danger</button></h5></div> -->
         </div>
         {% endfor %}
-        </div>
     </row>
 </container>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
