@@ -15,39 +15,34 @@
 <body>
 
 <div class="container-fluid"> 
-    <div class="col-md-12">
-        <div class="text-center font-weight-bold">
-            <h1 class="header">DASHBOARD</h1>
-            <div class="container-sm">
-            <nav class="navbar bg-* w-50  mx-auto">
-                <div class="container-sm justify-content-center">
-                    
-                        <span class="links"><a class="navbar-brand text-light" href="{% url 'index' %}">Home</a></span> 
-                        <span class="links"><a class="navbar-brand text-light" href="{% url 'index' %}">Search</a></span>
-                        <span class="links"><a class="navbar-brand text-light" href="{% url 'index' %}">Watchlist</a></span>
-                
-                </div>
-            </nav>
-            </div>
-        </div> 
-    </div>
+    {% include "polls/header.html" %}
 
 <container>
     <row>
-        {% if test == 'true' %}
+        <div class="col-md-12 text-center pt-3 pb-5 fs-6">
+            <h3>{{msg}}</h3>
+        </div>
         {% for el in form %}
         <div class="row">
-        <div class="col-md-3"><h1>{{el.symbol}}</h1></div>
-        <div class="col-md-3"><h1>Market Cap: {{el.metric.marketCapitalization}}</h1></div>
-        <div class="col-md-3"><h1>52 Week range: {{el.metric.52WeekLow}} - {{el.metric.52WeekHigh}}</h1></div>
+            <div class="col-md-1 fs-6">
+            <div style="margin-top:1px;"> 
+                <span class="icon">      
+                    <img src={{el.image}} alt="img" class="rounded-circle img-thumbnail icon"> 
+                </span> 
+            </div>
+            </div>
+            <div class="col-md-2 fs-6"><h6>{{el.companyName}}</h6></div>
+            <div class="col-md-1 fs-6"><h6>{{el.symbol}}</h6></div>
+            <div class="col-md-2 ms-n3 fs-6"><h6>Current price: <br>{{el.price}}</h6></div>
+            <div class="col-md-1 fs-6"><h6>Change: {{el.changes | floatformat:2 }}</h6></div>
+            <div class="col-md-1 fs-6"><h6>Range: {{el.range}}</h6></div>
+            <div class="col-md-2 fs-6"><h6>Market Cap: {{el.mktCap}}</h6></div>
+            <div class="col-md-1 fs-6"><h6>Beta: {{el.beta}}</h6></div>
+            <div class="col-md-1 fs-6"><h6><button type="button" class="btn btn-danger">Danger</button></h6></div>
         </div>
         {% endfor %}
-        {% else %}
-            <h1>{{form}}</h1>
-        {% endif %}
         </div>
     </row>
-</container>
 </container>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
