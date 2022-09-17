@@ -32,23 +32,6 @@
     <!-- <input type="text" name="search"   class="search" onmouseout="this.value = ''; this.blur();"> -->
 </form>
     <div class="content">
-        <!-- <div class="sidebar">
-            <div class="news-head">Latest News><br><br></div>
-            <ul>
-                {% for key in news.feed %}
-                    <li class="news_title">
-                        <a href= {{key.url}}><strong>{{key.title}}</strong></a>
-                    </li>
-                    <li>
-                        {% if key.banner_image %}
-                        <img src={{key.banner_image}} alt="img" class="news_images">
-                        {% endif %}
-                        {{key.summary}}
-                    </li>
-                    <br>
-                {% endfor %}
-            </ul>
-        </div> -->
         <div class="main pt-4">
             <div class="most_traded">
                 <h2 class="text-center top-movers">Top Movers ></h2>
@@ -110,9 +93,21 @@
             </div>
         </div>
     </div>
+    <div class="col-md-12 mt-3">
+        <ul class="list-group">
+            {% for key in news.feed %}  
+                <li class="list-group-item bg-dark mb-3">
+                    {% if key.banner_image %}
+                    <img src={{key.banner_image}} alt="img" class="news_images">
+                    <a href= {{key.url}}><strong>{{key.title}}</strong></a>
+                    <p class="ms-5 text-light fs-6">{{key.summary}}</p> 
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div> 
     {% block script %}
     {% endblock script %}
-</div>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 </body>
