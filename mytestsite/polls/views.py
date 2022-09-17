@@ -83,7 +83,7 @@ def addstock(request):
             response = requests.get('https://financialmodelingprep.com/api/v3/profile/' + str(ticker) + '?apikey=a47ede9cfb01fb619982832def1ce5cc').json() 
             for el in response: 
                 if el['beta']: 
-                    el['beta'] = "fart"
+                    el['beta'] = "fart" 
                 metrics.append(el)
 
         return render(request, 'polls/results.html', {'form': metrics, 'exists': "false", 'msg': "Successfully added equity to watchlist"})

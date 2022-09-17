@@ -1,5 +1,5 @@
 html body {
-    background: black !important;
+    background: #091121 !important;
     margin: 30px !important;
     color: #d1d4dc;
     font-family: 'Ubuntu', sans-serif;
@@ -56,3 +56,4 @@ html body {
 a {
     text-decoration: none;
 }
+

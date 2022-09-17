@@ -20,39 +20,23 @@
 <container>
     <row>
         <div class="col-md-12 text-center pt-3 pb-5 fs-6">
-            <h3>{{msg}}</h3>
+            <h3><strong>{{msg}}</strong></h3>
         </div>
         {% for el in form %}
         
-        <div class="row">
-            <ul class="col-md-12 list-group list-group-horizontal">
-                <li class="col-md-1 list-group-item">
+        <div class="row mt-2 text-light">
+            <ul class="col-md-12 bg-dark text-light list-group list-group-horizontal">
+                <li class="col-md-1 bg-dark list-group-item">
                     <span class="icon"><img src={{el.image}} alt="img" class="rounded-circle img-thumbnail icon"></span> </li>
-                <li class="col-md-2 list-group-item pt-3"><strong>{{el.companyName}}</strong> </li>
-                <li class="col-md-1 list-group-item pt-3"><strong>{{el.symbol}}</strong></li>
-                <li class="col-md-2 list-group-item pt-3"><strong>Current price:</strong><br>{{el.price}}</li>
-                <li class="col-md-1 list-group-item pt-3"><strong>Change:</strong><br>{{el.changes | floatformat:2 }}</li>
-                <li class="col-md-1 list-group-item pt-3"><strong>Range: </strong><br>{{el.range}}</li>
-                <li class="col-md-2 list-group-item pt-3"><strong>Market Cap: </strong><br>{{el.mktCap}}</li>
+                <li class="col-md-2 bg-dark text-light list-group-item pt-4"><strong>{{el.companyName}}</strong> </li>
+                <li class="col-md-1 bg-dark text-light list-group-item pt-4"><strong>{{el.symbol}}</strong></li>
+                <li class="col-md-2 bg-dark text-light list-group-item pt-4"><strong>Current price:</strong><br>{{el.price}}</li>
+                <li class="col-md-1 bg-dark text-light list-group-item pt-4"><strong>Change:</strong><br>{{el.changes | floatformat:2 }}</li>
+                <li class="col-md-1 bg-dark text-light list-group-item pt-4"><strong>Range: </strong><br>{{el.range}}</li>
+                <li class="col-md-2 bg-dark text-light list-group-item pt-4"><strong>Market Cap: </strong><br>{{el.mktCap}}</li>
                 <!-- <li class="col-md-1 list-group-item">Beta: <br>{{el.beta}}</li> -->
-                <li class="col-md-2 text-center list-group-item pt-3"><button type="button" class="btn btn-lg btn-danger">Delete</button></li>
+                <li class="col-md-2 bg-dark text-light text-center list-group-item pt-3"><button type="button" class="btn btn-lg btn-danger">Delete</button></li>
             </ul>
-
-            <!-- <div class="col-md-1 fs-6">
-            <div style="margin-top:1px;"> 
-                <span class="icon">      
-                    <img src={{el.image}} alt="img" class="rounded-circle img-thumbnail icon"> 
-                </span> 
-            </div>
-            </div>
-            <div class="col-md-2 pt-4 fs-6"><h5>{{el.companyName}}</h5></div>
-            <div class="col-md-1 pt-4 fs-6"><h5>{{el.symbol}}</h5></div>
-            <div class="col-md-2 pt-4 fs-6"><h5>Current price: <br>{{el.price}}</h5></div>
-            <div class="col-md-1 pt-4 fs-6"><h5>Change: <br>{{el.changes | floatformat:2 }}</h5></div>
-            <div class="col-md-1 pt-4 fs-6"><h5>Range: <br>{{el.range}}</h5></div>
-            <div class="col-md-2 pt-4 fs-6"><h5>Market Cap: <br>{{el.mktCap}}</h5></div>
-            <div class="col-md-1 pt-4 fs-6"><h5>Beta: <br>{{el.beta}}</h5></div>
-            <div class="col-md-1 pt-4 fs-6"><h5><button type="button" class="btn btn-danger">Danger</button></h5></div> -->
         </div>
         {% endfor %}
     </row>
