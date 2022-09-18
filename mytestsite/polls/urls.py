@@ -5,6 +5,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('search/', views.search, name='search'),
     path('search/results/', views.addstock, name="addstock"),
+    path('watchlist/', views.watchlist, name="watchlist"),
     # path('delete/<id>', views.delete, name='delete'),
     path('<int:question_id>/', views.detail, name='detail'),
     path('<int:question_id>/results/', views.results, name='results'),

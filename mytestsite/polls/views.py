@@ -58,7 +58,7 @@ def search(request):
         "beta": response["Beta"], 
         "div_yield": response["DividendYield"],
         # "DivDate": response["ExDividendDate"]
-    }
+    }   
 
     return render(request, 'polls/search.html', {'form': metrics})
 
@@ -88,6 +88,9 @@ def addstock(request):
 
         return render(request, 'polls/results.html', {'form': metrics, 'exists': "false", 'msg': "Successfully added equity to watchlist"})
 
+
+def watchlist(request): 
+    return render(request, 'polls/watchlist.html', {'form': "Ontolocial study"})
 
 # def delete()
 
